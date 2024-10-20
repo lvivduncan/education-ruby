@@ -6,4 +6,4 @@ print "\n pryvit \n ".chomp
 
 puts "\n pryvit \n ".chomp
 
-print 'Hello, world!'
+print('Hello, world!')

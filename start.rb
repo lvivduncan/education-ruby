@@ -1,72 +1,34 @@
-class Test
+hash_data = {:name => 'Імʼя людини', "name1" => 12}
+puts hash_data[:name]
+puts :name
+puts '-------------------------'
+# однакові айді у символів
+puts hash_data[:name].object_id
+puts hash_data[:name].object_id
+# мали би бути різні айді у рядка. перевірити 
+puts hash_data["name1"].object_id
+puts hash_data["name1"].object_id
+puts '-------------------------'
 
-    def initialize
-        # тут неявно є return
-        @price = 50
+class Item 
+
+    def initialize(params)
+        @height = params[:height]
+        @width = params[:width]
     end
 
-    def view
-        # тут неявно є return
-        @price
-    end
-
-    def view=(value)
-        # тут неявно є return
-        @price = value
-    end 
+    attr_accessor :height, :width
+    # attr_reader :height, :width
+    # attr_writer :height, :width
 end
 
-default = Test.new
-puts default.view
+# задаємо параметри одразу при створенні об'єкта
+# obj1 = Item.new({:height => 100, :width => 200})
 
-test1 = Test.new
-test1.view=(100)
-puts test1.view
+# або якщо є потреба добавляти значення (параметри) уже після створення об'єкта, то все одно має бути ініціалізація, бо у класі ми використовуємо initialize з параметрами
+obj1 = Item.new({})
+obj1.height = 110
+obj1.width = 220
 
-test2 = Test.new 
-test2.view=(200)
-puts test2.view
-
-# ruby значення присвоює ніби напряму, але це фіча. сеттер
-test3 = Test.new
-test3.view = 300
-puts test3.view 
-
-puts '-------------------'
-
-class Goods
-
-    def initialize
-    
-        @color = 'black'
-        @weight = 100
-        @height = 50
-        @price = 1
-    
-    end
-
-    # universal (getter and setter)
-    attr_accessor :price
-
-    attr_reader :color, :weight, :height
-    attr_writer :color, :weight, :height
-end 
-
-item_default = Goods.new
-puts 'color: ' + item_default.color
-puts 'weight: ' + item_default.weight.to_s
-puts 'height: ' + item_default.height.to_s
-puts 'price: ' + item_default.price.to_s
-
-item1 = Goods.new
-item1.color = 'red'
-item1.weight = 120
-item1.height = 55
-
-puts 'color: ' + item1.color
-puts 'weight: ' + item1.weight.to_s
-puts 'height: ' + item1.height.to_s
-
-puts Test.object_id
-puts Goods.object_id
-
+puts obj1.height
+puts obj1.width

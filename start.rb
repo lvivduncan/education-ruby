@@ -32,3 +32,4 @@ obj1.width = 220
 
 puts obj1.height
 puts obj1.width
+
